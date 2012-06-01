@@ -19,7 +19,7 @@
 		return 1;
 	}
 	if (section == 3) {
-		return 1;
+		return 2;
 	}
 
 	
@@ -82,6 +82,10 @@
 			case 0:
 				cell.textLabel.text = @"Pushing another navigation controller";
 				break;
+			case 1:
+				cell.textLabel.text = @"Add subview";
+				break;
+
 			default:
 				break;
 		}
@@ -174,6 +178,12 @@
 				[navController release];
 			}
 				break;				
+			case 1:
+			{
+				UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+				[aView addSubview:aView];
+			}
+				break;
 			default:
 				break;
 		}
