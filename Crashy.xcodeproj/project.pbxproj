@@ -13,6 +13,10 @@
 		D451A4191578C0C30005162D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A4181578C0C20005162D /* main.m */; };
 		D451A41E1578C0C30005162D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A41D1578C0C30005162D /* AppDelegate.m */; };
 		D451A42D1578C1240005162D /* CCRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A42C1578C1240005162D /* CCRootTableViewController.m */; };
+		D45B4AA915790928007BBB49 /* CCBuggyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D45B4AA815790928007BBB49 /* CCBuggyViewController.m */; };
+		D45B4AAD15790B98007BBB49 /* CCBuggyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D45B4AAC15790B98007BBB49 /* CCBuggyObject.m */; };
+		D45B4AB115790CE5007BBB49 /* CCBuggyDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D45B4AAF15790CE5007BBB49 /* CCBuggyDelegateViewController.m */; };
+		D45B4AB415790E1E007BBB49 /* CCBuggyDelegateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D45B4AB315790E1E007BBB49 /* CCBuggyDelegateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,13 @@
 		D451A41D1578C0C30005162D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate/AppDelegate.m; sourceTree = "<group>"; };
 		D451A42B1578C1240005162D /* CCRootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRootTableViewController.h; path = Classes/CCRootTableViewController.h; sourceTree = "<group>"; };
 		D451A42C1578C1240005162D /* CCRootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCRootTableViewController.m; path = Classes/CCRootTableViewController.m; sourceTree = "<group>"; };
+		D45B4AA715790928007BBB49 /* CCBuggyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCBuggyViewController.h; path = Classes/CCBuggyViewController.h; sourceTree = "<group>"; };
+		D45B4AA815790928007BBB49 /* CCBuggyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCBuggyViewController.m; path = Classes/CCBuggyViewController.m; sourceTree = "<group>"; };
+		D45B4AAB15790B98007BBB49 /* CCBuggyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCBuggyObject.h; path = Classes/CCBuggyObject.h; sourceTree = "<group>"; };
+		D45B4AAC15790B98007BBB49 /* CCBuggyObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCBuggyObject.m; path = Classes/CCBuggyObject.m; sourceTree = "<group>"; };
+		D45B4AAE15790CE5007BBB49 /* CCBuggyDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCBuggyDelegateViewController.h; path = Classes/CCBuggyDelegateViewController.h; sourceTree = "<group>"; };
+		D45B4AAF15790CE5007BBB49 /* CCBuggyDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCBuggyDelegateViewController.m; path = Classes/CCBuggyDelegateViewController.m; sourceTree = "<group>"; };
+		D45B4AB315790E1E007BBB49 /* CCBuggyDelegateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CCBuggyDelegateViewController.xib; path = Resources/CCBuggyDelegateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +93,7 @@
 		D451A4151578C0C20005162D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D45B4AB315790E1E007BBB49 /* CCBuggyDelegateViewController.xib */,
 				D451A4161578C0C20005162D /* Info.plist */,
 				D451A4171578C0C20005162D /* Prefix.pch */,
 				D451A4181578C0C20005162D /* main.m */,
@@ -92,6 +104,14 @@
 		D451A41A1578C0C30005162D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D451A42B1578C1240005162D /* CCRootTableViewController.h */,
+				D451A42C1578C1240005162D /* CCRootTableViewController.m */,
+				D45B4AA715790928007BBB49 /* CCBuggyViewController.h */,
+				D45B4AA815790928007BBB49 /* CCBuggyViewController.m */,
+				D45B4AAB15790B98007BBB49 /* CCBuggyObject.h */,
+				D45B4AAC15790B98007BBB49 /* CCBuggyObject.m */,
+				D45B4AAE15790CE5007BBB49 /* CCBuggyDelegateViewController.h */,
+				D45B4AAF15790CE5007BBB49 /* CCBuggyDelegateViewController.m */,
 				D451A41B1578C0C30005162D /* AppDelegate */,
 			);
 			name = Classes;
@@ -102,8 +122,6 @@
 			children = (
 				D451A41C1578C0C30005162D /* AppDelegate.h */,
 				D451A41D1578C0C30005162D /* AppDelegate.m */,
-				D451A42B1578C1240005162D /* CCRootTableViewController.h */,
-				D451A42C1578C1240005162D /* CCRootTableViewController.m */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -159,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D45B4AB415790E1E007BBB49 /* CCBuggyDelegateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +191,9 @@
 				D451A4191578C0C30005162D /* main.m in Sources */,
 				D451A41E1578C0C30005162D /* AppDelegate.m in Sources */,
 				D451A42D1578C1240005162D /* CCRootTableViewController.m in Sources */,
+				D45B4AA915790928007BBB49 /* CCBuggyViewController.m in Sources */,
+				D45B4AAD15790B98007BBB49 /* CCBuggyObject.m in Sources */,
+				D45B4AB115790CE5007BBB49 /* CCBuggyDelegateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +289,7 @@
 				D451A42A1578C0C30005162D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

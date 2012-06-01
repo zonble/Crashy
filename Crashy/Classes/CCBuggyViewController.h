@@ -1,0 +1,3 @@
+@interface CCBuggyViewController : UIViewController
+
+@end

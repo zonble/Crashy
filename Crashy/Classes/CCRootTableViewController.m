@@ -1,16 +1,27 @@
 #import "CCRootTableViewController.h"
+#import "CCBuggyViewController.h"
+#import "CCBuggyDelegateViewController.h"
 #import <libkern/OSAtomic.h>
 
 @implementation CCRootTableViewController
 
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        self.title = @"Crashy";
+    }
+    return self;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == 0) {
-		return 3;
+		return 5;
 	}
 	if (section == 1) {
 		return 7;
@@ -19,9 +30,11 @@
 		return 1;
 	}
 	if (section == 3) {
-		return 2;
+		return 4;
 	}
-
+	if (section == 4) {
+		return 1;
+	}
 	
 	return 0;
 }
@@ -38,9 +51,15 @@
 				cell.textLabel.text = @"Invalid memory reference";
 				break;				
 			case 1:
-				cell.textLabel.text = @"Over-release";
+				cell.textLabel.text = @"Invalid memory reference";
 				break;
 			case 2:
+				cell.textLabel.text = @"Over-release";
+				break;
+			case 3:
+				cell.textLabel.text = @"Over-release";
+				break;
+			case 4:
 				cell.textLabel.text = @"Over-release";
 				break;
 			default:
@@ -85,10 +104,18 @@
 			case 1:
 				cell.textLabel.text = @"Add subview";
 				break;
-
+			case 2:
+				cell.textLabel.text = @"Load view";
+				break;
+			case 3:
+				cell.textLabel.text = @"Push and pull";
+				break;
 			default:
 				break;
 		}
+	}
+	else if (indexPath.section == 4) {
+		cell.textLabel.text = @"Buggy delegate";
 	}
 	
     return cell;	
@@ -104,14 +131,30 @@
 				break;				
 			case 1:
 			{
+				NSData *data = [@"Let me creash" dataUsingEncoding:NSUTF8StringEncoding];
+				const char *buffer;
+//				buffer = calloc([data length], 1);
+				[data getBytes:(void *)buffer];
+				NSLog(@"%s", buffer);
+			}
+				break;
+			case 2:
+			{
 				NSMutableArray *a = [NSMutableArray array];
 				[a release];
 				[a addObject:@"1"];
 			}
-			case 2:
+			case 3:
 			{
 				NSMutableArray *a = [NSMutableArray array];
 				[a autorelease];
+			}
+				break;
+			case 4:
+			{
+				CFArrayRef a = CFArrayCreate(NULL, 0, 0, NULL);
+				CFRelease(a);
+				CFRelease(a);
 			}
 				break;
 			default:
@@ -166,7 +209,7 @@
 	else if (indexPath.section == 2) {
 		OSSpinLock lock = OS_SPINLOCK_INIT;
 		OSSpinLockLock(&lock);
-//		OSSpinLockLock(&lock);
+		OSSpinLockLock(&lock);
 		OSSpinLockUnlock(&lock);
 	}
 	else if (indexPath.section == 3) {
@@ -180,13 +223,31 @@
 				break;				
 			case 1:
 			{
-				UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+				UIView *aView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)] autorelease];
 				[aView addSubview:aView];
+			}
+				break;
+			case 2:
+			{
+				CCBuggyViewController *viewController = [[CCBuggyViewController alloc] init];
+				[self.navigationController pushViewController:viewController animated:YES];
+			}
+				break;
+			case 3:
+			{
+				UIViewController *viewController = [[UIViewController alloc] init];
+				[self.navigationController pushViewController:viewController animated:YES];
+				[self.navigationController performSelector:@selector(popToRootViewControllerAnimated:) withObject:nil afterDelay:0.1];
+				[viewController release];
 			}
 				break;
 			default:
 				break;
 		}
+	}
+	else if (indexPath.section == 4) {
+		CCBuggyDelegateViewController *viewController = [[CCBuggyDelegateViewController alloc] initWithNibName:NSStringFromClass([CCBuggyDelegateViewController class]) bundle:nil];
+		[self.navigationController pushViewController:viewController animated:YES];
 	}
 }
 
@@ -202,6 +263,8 @@
 			return @"Hang";
 		case 3:
 			return @"UIKit";
+		case 4:
+			return @"Buggy Delegate";
 		default:
 			break;
 	}
