@@ -21,10 +21,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == 0) {
-		return 5;
+		return 6;
 	}
 	if (section == 1) {
-		return 9;
+		return 10;
 	}
 	if (section == 2) {
 		return 1;
@@ -62,6 +62,9 @@
 			case 4:
 				cell.textLabel.text = @"Over-release";
 				break;
+			case 5:
+				cell.textLabel.text = @"Over-release";
+				break;
 			default:
 				break;
 		}
@@ -93,6 +96,9 @@
 				cell.textLabel.text = @"Unrecognized selector";
 				break;
 			case 8:
+				cell.textLabel.text = @"Unrecognized selector";
+				break;
+			case 9:
 				cell.textLabel.text = @"Devide by zero";
 				break;
 			default:
@@ -163,6 +169,14 @@
 				CFRelease(a);
 			}
 				break;
+			case 5:
+			{
+				id x = [NSNotificationCenter defaultCenter];
+				NSLog(@"%d", [x retainCount]);
+				[x release];
+				NSLog(@"%d", [x retainCount]);
+			}
+				break;
 			default:
 				break;
 		}
@@ -214,6 +228,13 @@
 			}
 				break;
 			case 8:
+			{
+				NSArray *a = (NSArray *)@"Hi";
+				for (id x in a) {
+					NSLog(@"obj:%@", x);
+				}
+			}
+			case 9:
 			{
 				NSDecimalNumber *a = [NSDecimalNumber decimalNumberWithString:@"1"];
 				NSDecimalNumber *b = [NSDecimalNumber decimalNumberWithString:@"0"];
