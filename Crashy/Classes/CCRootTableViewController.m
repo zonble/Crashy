@@ -24,7 +24,7 @@
 		return 5;
 	}
 	if (section == 1) {
-		return 7;
+		return 9;
 	}
 	if (section == 2) {
 		return 1;
@@ -78,16 +78,22 @@
 				cell.textLabel.text = @"Raise an exception";
 				break;
 			case 3:
-				cell.textLabel.text = @"Out of bound";
+				cell.textLabel.text = @"Out of bounds";
 				break;				
 			case 4:
-				cell.textLabel.text = @"Add nil to NSArray";
+				cell.textLabel.text = @"Out of bounds";
 				break;
 			case 5:
-				cell.textLabel.text = @"Set object as nil to NSDictionary";
+				cell.textLabel.text = @"Add nil to NSArray";
 				break;
 			case 6:
+				cell.textLabel.text = @"Set object as nil to NSDictionary";
+				break;
+			case 7:
 				cell.textLabel.text = @"Unrecognized selector";
+				break;
+			case 8:
+				cell.textLabel.text = @"Devide by zero";
 				break;
 			default:
 				break;
@@ -187,19 +193,31 @@
 				break;				
 			case 4:
 			{
+				[@"Hi" characterAtIndex:12];
+			}
+				break;
+			case 5:
+			{
 				NSMutableArray *a = [NSMutableArray arrayWithObjects:@"1", @"2", nil];
 				[a addObject:nil];
 			}
 				break;
-			case 5:
+			case 6:
 			{
 				NSMutableDictionary *d = [NSMutableDictionary dictionary];
 				[d setObject:nil forKey:@"key"];
 			}
 				break;
-			case 6:
+			case 7:
 			{
 				[@"Hi" performSelector:@selector(letMeCrash)];
+			}
+				break;
+			case 8:
+			{
+				NSDecimalNumber *a = [NSDecimalNumber decimalNumberWithString:@"1"];
+				NSDecimalNumber *b = [NSDecimalNumber decimalNumberWithString:@"0"];
+				[a decimalNumberByDividingBy:b];
 			}
 				break;
 			default:
